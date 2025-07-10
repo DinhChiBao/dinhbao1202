@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f7f7f7;
+  background: white;
   padding: 30px;
   margin: 0;
 }
@@ -19,37 +19,46 @@ input, select, button {
   padding: 10px;
   margin: 5px;
   font-size: 16px;
+  border-radius: 8px;
+  border-color: black;
+  border-width: 3px;
 }
 
 button {
   background-color: #009688;
-  color: white;
+  color: black;
   border: none;
   cursor: pointer;
+  border-radius: 7px;
 }
 
 button:hover {
-  background-color: #00796b;
+  background-color: #129e31;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background: white;
+  color:#121212;
+  border-color: #121212;
+  border-width: 20px;
+
 }
 
 th, td {
-  border: 1px solid #ccc;
+  border: 1px solid #030303;
   padding: 8px;
   text-align: center;
 }
 
 .delete-btn {
   background: red;
-  color: white;
+  color: black;
   border: none;
   padding: 6px 10px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .total {
@@ -62,23 +71,42 @@ th, td {
 footer {
   margin-top: 30px;
   text-align: center;
-  color: #666;
-  font-size: 14px;
+  color: black;
+  font-size: 18px;
 }
-.salary-settings {
-  background: #f5f5f5;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 6px;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
+
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
 }
-.salary-settings label {
-  font-weight: bold;
+
+body.dark-mode .salary-settings,
+body.dark-mode .add-form,
+body.dark-mode table,
+body.dark-mode .content,
+body.dark-mode .login-box {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  color: white;
 }
-.salary-settings input {
-  padding: 5px;
-  width: 120px;
+
+body.dark-mode input,
+body.dark-mode select {
+  background-color: #2a2a2a;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.dark-mode th {
+  background-color: #333;
+}
+
+body.dark-mode button {
+  color: white;
+}
+
+body.dark-mode .footer {
+  color: #aaa;
 }
