@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>App Chấm Công</title>
+  <link rel="stylesheet" href="style-1.css">
+</head>
+<body>
+  <h1>Ứng dụng Chấm Công</h1>
+  <div class="form">
+    <input type="date" id="dateInput">
+    <select id="typeInput">
+      <option value="Thường">Ngày thường</option>
+      <option value="Tăng ca">Tăng ca</option>
+    </select>
+    <input type="time" id="startInput" placeholder="Giờ bắt đầu">
+    <input type="time" id="endInput" placeholder="Giờ kết thúc">
+    <button onclick="addAttendance()">Chấm công</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ngày</th>
+        <th>Loại</th>
+        <th>Bắt đầu</th>
+        <th>Kết thúc</th>
+        <th>Lương (VND)</th>
+        <th>Xóa</th>
+      </tr>
+    </thead>
+    <tbody id="attendanceList"></tbody>
+  </table>
+
+  <p class="total">Tổng lương: <strong id="totalSalary">0</strong> VND</p>
+<div class="salary-settings">
+  <label>Lương cơ bản/ngày: <input type="number" id="baseSalaryInput" value="500000"></label>
+  <label>Lương tăng ca/giờ: <input type="number" id="otSalaryInput" value="300000"></label>
+  <button onclick="saveSalary()">Lưu lương</button>
+</div>
+  <footer>
+    <p>© 2025 Bản quyền thuộc Đinh Bảo || dinhbao122002@gmail.com</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
