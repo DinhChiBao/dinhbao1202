@@ -101,5 +101,30 @@ function deleteRow(index) {
   }
 }
 
+function deleteRow(index) {
+  if (confirm("Bạn có chắc chắn muốn xóa?")) {
+    data.splice(index, 1);
+    saveData();
+    renderTable();
+  }
+}
+  document.getElementById('toggle-dark').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Ghi trạng thái vào localStorage để nhớ
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('mode', 'dark');
+    } else {
+      localStorage.setItem('mode', 'light');
+    }
+  });
+
+  // Load lại chế độ nếu người dùng đã chọn
+  window.onload = () => {
+    if (localStorage.getItem('mode') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  };
+
 // Khởi động
 renderTable();
