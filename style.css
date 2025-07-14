@@ -25,7 +25,7 @@ input, select, button {
 }
 
 button {
-  background-color: #009688;
+  background-color: #1bbb29;
   color: black;
   border: none;
   cursor: pointer;
@@ -33,7 +33,7 @@ button {
 }
 
 button:hover {
-  background-color: #129e31;
+  background-color: red;
 }
 
 table {
