@@ -6,18 +6,10 @@ let otSalary = parseInt(localStorage.getItem("otSalary")) || 300000;
 document.getElementById("baseSalaryInput").value = baseSalary;
 document.getElementById("otSalaryInput").value = otSalary;
 
-
-
-
-
-
 const attendanceList = document.getElementById("attendanceList");
 const totalSalaryEl = document.getElementById("totalSalary");
 const normalDaysEl = document.getElementById("normalDays"); // phần mới
 const otHoursEl = document.getElementById("otHours");       // phần mới
-
-
-
 
 function saveData() {
   localStorage.setItem("attendanceData", JSON.stringify(data));
@@ -47,6 +39,7 @@ function renderTable() {
       const hours = (end - start) / 3600000;
       totalOtHours += Math.max(0, hours);
     }
+
     row.innerHTML = `
       <td>${item.date}</td>
       <td>${item.type}</td>
@@ -59,6 +52,8 @@ function renderTable() {
   });
 
   totalSalaryEl.textContent = total.toLocaleString();
+  normalDaysEl.textContent = normalDays;
+  otHoursEl.textContent = totalOtHours.toFixed(2);
 }
 
 function calculateSalary(item) {
@@ -73,7 +68,6 @@ function calculateSalary(item) {
   }
   return 0;
 }
-
 
 function addAttendance() {
   const date = document.getElementById("dateInput").value;
@@ -102,6 +96,7 @@ function addAttendance() {
   document.getElementById("startInput").value = "";
   document.getElementById("endInput").value = "";
 }
+
 function saveSalary() {
   baseSalary = parseInt(document.getElementById("baseSalaryInput").value) || 0;
   otSalary = parseInt(document.getElementById("otSalaryInput").value) || 0;
@@ -118,30 +113,15 @@ function deleteRow(index) {
   }
 }
 
-function deleteRow(index) {
-  if (confirm("Bạn có chắc chắn muốn xóa?")) {
-    data.splice(index, 1);
-    saveData();
-    renderTable();
+// 🌙 DARK MODE
+document.getElementById('toggle-dark').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('mode', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+});
+
+window.onload = () => {
+  if (localStorage.getItem('mode') === 'dark') {
+    document.body.classList.add('dark-mode');
   }
-}
-  document.getElementById('toggle-dark').addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    // Ghi trạng thái vào localStorage để nhớ
-    if (document.body.classList.contains('dark-mode')) {
-      localStorage.setItem('mode', 'dark');
-    } else {
-      localStorage.setItem('mode', 'light');
-    }
-  });
-
-  // Load lại chế độ nếu người dùng đã chọn
-  window.onload = () => {
-    if (localStorage.getItem('mode') === 'dark') {
-      document.body.classList.add('dark-mode');
-    }
-  };
-
-// Khởi động
-renderTable();
+  renderTable();
+};
