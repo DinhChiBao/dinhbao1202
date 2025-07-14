@@ -13,6 +13,9 @@ document.getElementById("otSalaryInput").value = otSalary;
 
 const attendanceList = document.getElementById("attendanceList");
 const totalSalaryEl = document.getElementById("totalSalary");
+const normalDaysEl = document.getElementById("normalDays"); // phần mới
+const otHoursEl = document.getElementById("otHours");       // phần mới
+
 
 
 
@@ -30,6 +33,18 @@ function renderTable() {
     const salary = calculateSalary(item);
     total += salary;
 
+    // Đếm số ngày thường
+    if (item.type === "Thường") {
+      normalDays++;
+    }
+
+    // Tính giờ tăng ca
+    if (item.type === "Tăng ca" && item.start && item.end) {
+      const start = new Date(`1970-01-01T${item.start}`);
+      const end = new Date(`1970-01-01T${item.end}`);
+      const hours = (end - start) / 3600000;
+      totalOtHours += Math.max(0, hours);
+    }
     row.innerHTML = `
       <td>${item.date}</td>
       <td>${item.type}</td>
