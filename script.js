@@ -26,6 +26,8 @@ function saveData() {
 function renderTable() {
   attendanceList.innerHTML = "";
   let total = 0;
+  let normalDays = 0;
+  let totalOtHours = 0;
 
   data.forEach((item, index) => {
     const row = document.createElement("tr");
